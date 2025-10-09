@@ -3,7 +3,7 @@
 
 using namespace std;
 
-bool checkPalindrome(string s, int n, int low, int high)
+bool checkPalindrome(string s, int low, int high)
 {
     if (low >= high)
     {
@@ -13,7 +13,7 @@ bool checkPalindrome(string s, int n, int low, int high)
     {
         return false;
     }
-    return checkPalindrome(s, n, low + 1, high - 1);
+    return checkPalindrome(s, low + 1, high - 1);
 }
 
 int main()
@@ -22,7 +22,7 @@ int main()
     int n = s.length();
     int low = 0;
     int high = n - 1;
-    bool is_palindrome = checkPalindrome(s, n, low, high);
+    bool is_palindrome = checkPalindrome(s, low, high);
     if (is_palindrome)
     {
         cout << "String is a palindrome" << endl;
