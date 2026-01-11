@@ -22,28 +22,21 @@ void removeAdjDuplicates(string& s){
     }
     s = result;
 }
-void removeAdjDuplicates2(string& s){
-    stack<char> st;
-    string result = "";
-    for(int i = 0; i < s.length(); s++){ 
-        if(st.empty()){
-            st.push(s[i]);
-        }else if(st.top() == s[i]){
-            st.pop();
-        }else{
-            st.push(it);
-        }
+void removeAdjDuplicatesInplace(string& s){
+   int top = -1;
+   for(char c: s){
+    if(top >= 0 && s[top] == c){
+        top--;
+    }else{
+        s[++top] = c;
     }
-    while(!st.empty()){
-        result = st.top() + result;
-        st.pop();
-    }
-    s = result;
+   }
+   s.resize(top + 1);
 }
 
 int main(){
-    string s = "aabbcccd";
-    removeAdjDuplicates(s);
+    string s = "aaabbacccd";
+    removeAdjDuplicatesInplace(s);
     cout << s << endl;
     return 0;
 }
