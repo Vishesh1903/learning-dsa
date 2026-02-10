@@ -12,6 +12,10 @@ class Heap{
     Heap(): next_index(0), capacity(5), arr(new T[5]), implementation("min_heap"){}
     Heap(int size, string impltn): next_index(0), capacity(size), arr(new T[size]), implementation(impltn){}
     Heap(const Heap& h){
+        if(this -> implementation != h.implementation){
+            cout << "Cannot Copy Heap of different implementation" << endl;
+            return;
+        }
         this -> capacity = h.capacity;
         this -> next_index = h.next_index;
         this -> arr = new T[capacity];
@@ -22,6 +26,10 @@ class Heap{
     }
     Heap& operator=(const Heap& h){
         if(this != &h){
+            if(this -> implementation != h.implementation){
+                cout << "Cannot copy heap of different implementation" << endl;
+                return;
+            }
             delete[] arr;
             this -> capacity = h.capacity;
             this -> next_index = h.next_index;
